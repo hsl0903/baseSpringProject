@@ -30,4 +30,17 @@ public class UserRegisterVO implements Serializable {
     @ApiModelProperty(value = "确认密码")
     private String rePassword;
 
+    @ApiModelProperty(value = "手机号")
+    private String phone;
+
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+    @ApiModelProperty(value = "验证码")
+    private String code;
+    @ApiModelProperty(value = "用户类型")
+    private Integer userType;
+
+    @ApiModelProperty(value = "用户头像")
+    private String avatar;
+
 }

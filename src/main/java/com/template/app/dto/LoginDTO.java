@@ -40,4 +40,23 @@ public class LoginDTO implements Serializable {
     @ApiModelProperty(value = "接口列表")
     private List<String> apiList;
 
+    @ApiModelProperty(value = "用户头像")
+    private String avatar;
+
+    @ApiModelProperty(value = "用户手机号")
+        private String phone;
+
+    @ApiModelProperty(value = "用户邮箱")
+    private String email;
+
+    
+
+    
+
+
+
+
+
+
+
 }

@@ -23,8 +23,31 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
         setFieldValByName("updateTime", today, metaObject);
     }
 
+
     @Override
     public void updateFill(MetaObject metaObject) {
         setFieldValByName("updateTime", new Date(), metaObject);
     }
+
+    @Override
+    public void setFieldValByName(String fieldName, Object fieldVal, MetaObject metaObject) {
+        this.strictInsertFill(metaObject, fieldName, fieldVal, fieldVal.getClass());
+    }
+
+    @Override
+    public void updateFill(MetaObject metaObject) {
+        setFieldValByName("updateTime", new Date(), metaObject);
+    }
+
+    @Override
+    public void setFieldValByName(String fieldName, Object fieldVal, MetaObject metaObject, String... props) {
+        this.strictInsertFill(metaObject, fieldName, fieldVal, fieldVal.getClass());
+    }
+
+    @Override
+    public void updateFill(MetaObject metaObject, String... props) {
+        setFieldValByName("updateTime", new Date(), metaObject);
+        setFieldValByName("updateTime", new Date(), metaObject);
+    }
+
 }

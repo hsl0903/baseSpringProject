@@ -62,7 +62,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         BusinessCheck.trueThrow(user != null, 20012);
         user = new User();
         BeanUtil.copy(userRegisterVO, User.class);
-        setPassword(user, userRegisterVO.getPassword());
+        user.setPassword(userRegisterVO.getPassword());
         this.save(user);
         return BeanUtil.copy(user, LoginDTO.class);
 //        return createUserToRedis(user, false);
@@ -120,12 +120,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return loginDTO;
     }
 
-    private void setPassword(User user, String password) {
-        user.setPassword(password);
-        String salt = PasswordUtil.generateSalt();
-        user.setSalt(salt);
+    //更新用户密码
+    public void updatePassword(User user, String oldPassword, String newPassword) {
+        //验证旧密码
+        String encryptPassword = encrypt(user);
+        BusinessCheck.trueThrow(encryptPassword.equals(oldPassword), 20013);
+        //更新密码
+        user.setPassword(newPassword); 
+        user.setSalt(UUID.randomUUID().toString());
         user.setPassword(encrypt(user));
     }
+
 
     private String encrypt(User user) {
         return PasswordUtil.encryptPassword(user.getPassword(), user.getSalt());

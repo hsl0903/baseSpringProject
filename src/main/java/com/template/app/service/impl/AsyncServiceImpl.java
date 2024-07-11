@@ -25,7 +25,10 @@ public class AsyncServiceImpl implements IAsyncService {
     @Override
     @Async
     public void createAsyncTask(Long userId) {
+        // 查询所有昵称不为空的User实体
         List<User> userList = userService.list(Wrappers.<User>lambdaQuery().isNotNull(User::getNickname));
+        // 这里可以执行异步任务，例如发送邮件、短信等
+
     }
 
 }

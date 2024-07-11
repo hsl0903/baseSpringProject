@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 @Slf4j
+
 public class UserController {
 
     private final IUserService userService;
@@ -35,8 +36,10 @@ public class UserController {
         log.info("请求方法开始-->方法名:【updateUser】-->参数:userRegisterVO = {}", userRegisterVO.toString());
 //        userRegisterVO.setId(ContextUtil.getContext().getId());
         userService.updateUser(userRegisterVO);
-    }
 
+    }
+    
+    
     @PostMapping("/register")
     @ApiOperation(value = "POST实体请求示例，创建用户")
     public LoginDTO register(@RequestBody UserRegisterVO userRegisterVO) {
@@ -44,6 +47,7 @@ public class UserController {
 //        userRegisterVO.setId(ContextUtil.getContext().getId());
         return userService.register(userRegisterVO);
     }
+
 
     @GetMapping("/getUser")
     @ApiOperation(value = "GET请求示例，获取用户")
@@ -53,13 +57,28 @@ public class UserController {
         return new UserDTO();
     }
 
+    @GetMapping("/getUserInfo")
+    @ApiOperation(value = "GET普通传参示例，获取用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "用户ID", dataTypeClass = Long.class, required = true)
+    })
+    public UserDTO getUserInfo(@RequestParam Long userId) {
+        log.info("请求方法开始-->方法名:【getUserInfo】-->参数:userId = {}", userId);
+    }
+        return userService.getUserDetail(userId);
+        
+
+
+
     @GetMapping("/checkNickname")
     @ApiOperation(value = "GET普通传参示例，校验用户昵称")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "nickname", value = "昵称", dataTypeClass = String.class, required = true)
     })
-    public void checkNickname(@RequestParam String nickname) {
+    public void checkNickname(@RequestParam String nickname) 
+    {
         userService.checkNickname(nickname);
     }
+
 
 }

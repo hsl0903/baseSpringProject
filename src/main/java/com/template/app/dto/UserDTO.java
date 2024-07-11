@@ -24,4 +24,28 @@ public class UserDTO implements Serializable {
     @ApiModelProperty(value = "用户昵称")
     private String nickname;
 
+    @ApiModelProperty(value = "用户头像")
+    private String avatar;
+
+    @ApiModelProperty(value = "用户性别")
+    private Integer gender;
+
+    @ApiModelProperty(value = "用户手机号")
+    private String phone;
+
+    @ApiModelProperty(value = "用户邮箱")
+    private String email;
+
+    @ApiModelProperty(value = "用户密码")
+    private String password;
+
+    @ApiModelProperty(value = "用户状态")
+    private Integer status;
+
+    @ApiModelProperty(value = "用户角色")
+    private String role;
+
+    @ApiModelProperty(value = "用户创建时间")
+    private Long createTime;
+
 }
