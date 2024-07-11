@@ -81,6 +81,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
+    public void logout(String token) {
+        redisUtil.del(token);
+
+    }
+
+
+
+    @Override
     public void updateUser(UserRegisterVO userRegisterVO) {
         User user = this.getById(userRegisterVO.getId());
         BusinessCheck.trueThrow(user == null, 20002);
@@ -129,6 +137,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         user.setPassword(newPassword); 
         user.setSalt(UUID.randomUUID().toString());
         user.setPassword(encrypt(user));
+         this.updateById(user);
+         
     }
 
 

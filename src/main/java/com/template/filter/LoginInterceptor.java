@@ -49,4 +49,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         out.close();
         return false;*/
     }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        
+    }
 }

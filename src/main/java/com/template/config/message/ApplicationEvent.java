@@ -30,6 +30,9 @@ public class ApplicationEvent implements ApplicationListener<ContextRefreshedEve
 	@Override
 	public void onApplicationEvent(@NotNull ContextRefreshedEvent event) {
 		MessageUtil.setMessageSource(messageSource);
+        
 	}
+
+
 
 }

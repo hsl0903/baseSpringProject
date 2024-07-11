@@ -28,6 +28,8 @@ public class Test {
 			if (ch == ':' || ch == ',' || ch == ';')
 				str = str.substring(0, str.length() - 1);
 			System.out.println("用户名---->" + str);
+
+			System.out.println("替换后的---->" + msg);
 		}
 		System.out.println(msg);
 	}

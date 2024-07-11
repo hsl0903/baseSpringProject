@@ -46,6 +46,25 @@ public class ResultWapAdvice implements ResponseBodyAdvice<Object> {
         } else {
             resultDTO = ResultDTO.success(o);
         }
+
+        // 设置响应状态码
+        serverHttpResponse.setStatusCode(HttpStatus.OK);
+
+        // 设置响应头
+        serverHttpResponse.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+
+        // 设置响应体
+        serverHttpResponse.getBody().write(resultDTO.toString().getBytes(StandardCharsets.UTF_8));
+
+        // 关闭响应流
+        serverHttpResponse.getBody().flush();
+
+        // 关闭响应流
+        serverHttpResponse.getBody().close();
+
+        // 返回 ResultDTO
+
+        // 返回 ResultDTO
         return resultDTO;
     }
 

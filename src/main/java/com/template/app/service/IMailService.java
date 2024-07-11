@@ -16,4 +16,6 @@ public interface IMailService {
      */
     void sendSimpleMailMessage(String to, String content);
 
+    /**
+
 }

@@ -48,4 +48,11 @@ public class UserDTO implements Serializable {
     @ApiModelProperty(value = "用户创建时间")
     private Long createTime;
 
+    @ApiModelProperty(value = "用户更新时间")
+    private Long updateTime;
+
+    @ApiModelProperty(value = "用户删除时间")
+    private Long deleteTime;
+    @ApiModelProperty(value = "用户删除标志")
+
 }

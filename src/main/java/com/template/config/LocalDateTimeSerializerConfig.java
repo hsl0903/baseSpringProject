@@ -45,5 +45,6 @@ public class LocalDateTimeSerializerConfig {
                 .serializerByType(LocalDateTime.class, localDateTimeSerializer())
                 .deserializerByType(LocalDateTime.class, localDateTimeDeserializer());
     }
+        
 
 }

@@ -22,6 +22,8 @@ public class AsyncConfig {
         executor.setQueueCapacity(200);
         executor.setThreadNamePrefix("TaskExecutor-");
         executor.initialize();
+
+        return executor;
         return executor;
     }
 

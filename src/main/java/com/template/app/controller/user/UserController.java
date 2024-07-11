@@ -66,7 +66,7 @@ public class UserController {
         log.info("请求方法开始-->方法名:【getUserInfo】-->参数:userId = {}", userId);
     }
         return userService.getUserDetail(userId);
-        
+
 
 
 
@@ -79,6 +79,30 @@ public class UserController {
     {
         userService.checkNickname(nickname);
     }
+
+    @GetMapping("/checkPhone")
+    @ApiOperation(value = "GET普通传参示例，校验用户手机号")
+    @ApiImplicitParams({
+        
+            @ApiImplicitParam(name = "phone", value = "手机号", dataTypeClass = String.class, required = true)
+
+    })
+    public void checkPhone(@RequestParam String phone) {
+        userService.checkPhone(phone);
+    }
+
+    @GetMapping("/checkEmail")
+    @ApiOperation(value = "GET普通传参示例，校验用户邮箱")
+    @ApiImplicitParams({
+        
+            @ApiImplicitParam(name = "email", value = "邮箱", dataTypeClass = String.class, required = true)
+    })
+
+    @GetMapping("/checkEmail")
+    @ApiOperation(value = "GET普通传参示例，校验用户邮箱")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "email", value = "邮箱", dataTypeClass = String.class, required = true)
+    })
 
 
 }

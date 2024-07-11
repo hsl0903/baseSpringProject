@@ -33,4 +33,34 @@ public class User extends BaseEntity {
 
     @ApiModelProperty("生日")
     private Timestamp birthday;
+
+    @ApiModelProperty("性别")
+    private Integer gender;
+
+    @ApiModelProperty("手机号")
+    private String phone;
+
+    @ApiModelProperty("邮箱")
+    private String email;
+
+    @ApiModelProperty("头像")
+    private String avatar;
+
+    @ApiModelProperty("状态")
+    private Integer status;
+
+    @ApiModelProperty("备注")
+    private String remark;
+
+    @ApiModelProperty("创建人")
+    private Long createBy;
+
+    @ApiModelProperty("更新人")
+    private Long updateBy;
+
+    @ApiModelProperty("删除标识")
+    private Integer deleted;
+
+    @ApiModelProperty("删除时间")
+    private Timestamp deletedTime;
 }

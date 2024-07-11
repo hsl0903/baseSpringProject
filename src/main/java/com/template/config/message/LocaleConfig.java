@@ -33,6 +33,17 @@ public class LocaleConfig {
         return localeResolver;
     }
 
+    // 国际化配置
+       // @Bean
+        public LocaleMessageSource localeMessageSource() {
+           
+             LocaleMessageSource localeMessageSource = new LocaleMessageSource();
+                localeMessageSource.setBasenames("classpath:messages/messages");
+                    localeMessageSource.setDefaultEncoding("UTF-8");
+                return localeMessageSource;
+                
+       }
+
     /**
      * 默认拦截器 其中lang表示切换语言的参数名
      *

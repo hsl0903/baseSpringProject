@@ -17,4 +17,9 @@ public class WebSocketConfig {
         return new ServerEndpointExporter();
     }
 
+    // @Bean
+    public WebSocketInterceptor webSocketInterceptor() {
+        return new WebSocketInterceptor();
+    }
+
 }

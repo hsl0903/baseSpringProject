@@ -27,6 +27,7 @@ public class BizException extends RuntimeException {
         super(message);
         this.code = code;
         this.message = message;
+
     }
 
     public BizException(Integer code) {
@@ -34,10 +35,30 @@ public class BizException extends RuntimeException {
         this.message = MessageUtil.get(String.valueOf(code));
     }
 
+    public BizException(String message, Throwable cause) {
+           super(message, cause);   
+    }
+
+    public BizException(Throwable cause, Integer code) {
+           super(cause);
+    }
+
+    public BizException(Throwable cause) {
+        
+           super(cause);
+    }
+
     public BizException(String message) {
         super(message);
         this.code = 100001;
         this.message = message;
     }
+
+    public BizException() {
+           this.code = 100001;
+            this.message = "未知错误";
+
+    }
+
 
 }

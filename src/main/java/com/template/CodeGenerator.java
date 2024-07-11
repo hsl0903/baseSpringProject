@@ -132,6 +132,8 @@ public class CodeGenerator {
                             .superClass(BaseMapper.class)//设置父类
                             .formatMapperFileName("%sMapper")//格式化 mapper 文件名称
                             .formatXmlFileName("%sMapper")//格式化 xml 实现类文件名称
+                            .enableMapperAnnotation()
+                            .enableMybatisMapperAnnotation();
                             //开启生成service及impl
                             .serviceBuilder()
                             .formatServiceFileName("I%sService")//格式化 service 接口文件名称

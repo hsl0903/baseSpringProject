@@ -40,6 +40,15 @@ public class MathUtilTests {
         assertArrayEquals(expected, arr);
     }
 
+
+    @Test
+    public void testQuickSortAlreadySorted() {
+        int[] arr = {1, 2, 3};
+        int[] expected = {1, 2, 3};
+        MathUtil.quickSort(arr, 0, arr.length - 1);
+        assertArrayEquals(expected, arr);
+    }
+
     @Test
     public void testQuickSortAlreadySorted() {
         int[] arr = {1, 2, 3};

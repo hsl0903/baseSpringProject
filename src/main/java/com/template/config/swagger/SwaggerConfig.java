@@ -51,6 +51,21 @@ public class SwaggerConfig {
                 .version("v1")
                 .build();
     }
+        //生成全局通用参数
+        private List<RequestParameter> getGlobalRequestParameters() {
+               List<RequestParameter> parameters = new ArrayList<>();
+                  parameters.add(new RequestParameterBuilder()
+                      .name("token")
+                        .description("登录校验token")
+                        .required(true)
+                        .in(ParameterType.HEADER)
+                        .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
+                        .build()
+
+               )
+        }
+        return parameters;
+        
 
     //生成全局通用参数
     private List<RequestParameter> getGlobalRequestParameters() {
@@ -63,5 +78,7 @@ public class SwaggerConfig {
                 .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
                 .build());
         return parameters;
+
     }
+
 }
