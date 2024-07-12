@@ -26,6 +26,7 @@ public class GlobalExceptionAdvice {
     public Object handleCustomException(BizException e) {
         log.error("BizException===>{}", e.getMessage());
         return ResultDTO.fail(e.getCode(), e.getMessage());
+        
     }
 
     /**
@@ -39,6 +40,7 @@ public class GlobalExceptionAdvice {
         log.error("SYSTEM_EXCEPTION===>{}", e.getMessage());
         e.printStackTrace();
         return ResultDTO.fail(10001);
+
     }
     
 

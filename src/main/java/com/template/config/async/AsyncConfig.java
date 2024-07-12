@@ -27,4 +27,11 @@ public class AsyncConfig {
         return executor;
     }
 
+    @Bean
+    public AsyncConfigurer asyncConfigurer() {
+        return new AsyncConfigurer() {
+            
+        }
+    }
+
 }

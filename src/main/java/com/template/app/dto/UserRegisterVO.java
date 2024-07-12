@@ -46,4 +46,6 @@ public class UserRegisterVO implements Serializable {
     @ApiModelProperty(value = "用户性别")
     private Integer gender;
 
+    @ApiModelProperty(value = "用户状态")
+
 }

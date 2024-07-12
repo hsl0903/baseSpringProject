@@ -16,16 +16,23 @@ public class MathUtilTests {
         assertArrayEquals(expected, arr);
     }
 
+
     @Test
     public void testQuickSortDesc() {
+        // 测试快速排序函数
         int[] arr = {3, 2, 1};
+        // 期望的结果
         int[] expected = {1, 2, 3};
+        // 调用快速排序函数
         MathUtil.quickSort(arr, 0, arr.length - 1);
+        // 断言结果是否一致
         assertArrayEquals(expected, arr);
     }
 
+
     @Test
     public void testQuickSortEmpty() {
+        // 测试空数组
         int[] arr = {};
         int[] expected = {};
         MathUtil.quickSort(arr, 0, arr.length - 1);
@@ -34,18 +41,23 @@ public class MathUtilTests {
 
     @Test
     public void testQuickSortSingleElement() {
+        // 测试只有一个元素的数组
         int[] arr = {1};
         int[] expected = {1};
         MathUtil.quickSort(arr, 0, arr.length - 1);
         assertArrayEquals(expected, arr);
     }
-
-
     @Test
+
+    // 测试已经排序的数组
     public void testQuickSortAlreadySorted() {
+        // 定义一个已经排序的数组
         int[] arr = {1, 2, 3};
+        // 定义一个期望的数组
         int[] expected = {1, 2, 3};
+        // 对数组进行快速排序
         MathUtil.quickSort(arr, 0, arr.length - 1);
+        // 比较排序后的数组和期望的数组是否相等
         assertArrayEquals(expected, arr);
     }
 
@@ -66,6 +78,12 @@ public class MathUtilTests {
         for (int i = 0; i < size; i++) {
             arr[i] = rand.nextInt(size * 10);
         }
+
+        int[] expected = Arrays.copyOf(arr, arr.length);
+
+        Arrays.sort(expected);
+
+        // 调用快速排序函数
     
         // 使用快速排序算法对数组进行排序
         MathUtil.quickSort(arr, 0, arr.length - 1);
@@ -88,7 +106,14 @@ public class MathUtilTests {
     public void testQuickSort_SingleElementArray() {
         int[] arr = {5};
         MathUtil.quickSort(arr, 0, arr.length - 1);
-        assertArrayEquals(new int[]{5}, arr);
+        asse
+        rtArrayEquals(new int[]{5}, arr);
+    }
+
+    @Test           
+       public void testQuickSort_SortedArray() {
+        int[] arr = {1, 2, 3, 4, 5};
+        MathUtil.quickSort(arr, 0, arr.length - 1);
     }
 
     @Test

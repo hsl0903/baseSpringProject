@@ -14,4 +14,11 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IgnoreResultWap {
+
+    boolean value() default true;
+    String message() default "忽略返回";
+
+    String code() default "200";
+
+    String description() default "忽略返回";
 }

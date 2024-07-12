@@ -25,6 +25,13 @@ import static java.util.stream.Collectors.toList;
  * @author Doug Liu
  * @since 2022-06-10
  */
+ public class BeanUtil {
+        public static <T> Map<String, Object> beanToMap(T bean) {
+               if (bean == null) {
+                return null;
+            }   
+        }
+ }
 public class BeanUtil {
 
     /**
@@ -42,11 +49,14 @@ public class BeanUtil {
         try {
             target = clazz.getDeclaredConstructor().newInstance();
             BeanUtils.copyProperties(source, target);
+
+            //BeanUtils.copyProperties(source, target, getNullPropertyNames(source));   
         } catch (Exception e) {
             e.printStackTrace();
             throw new BizException(e.getMessage());
         }
         return target;
+        //return BeanUtil.copyProperties(source, clazz);
     }
 
     /**
@@ -57,6 +67,7 @@ public class BeanUtil {
      * @return List<K>
      * @param <T>        源实体泛型
      * @param <K>        目标实体泛型
+        */
      */
     public static <T, K> List<K> copyList(List<T> sourceList, Class<K> clazz) {
         if (sourceList == null) {
@@ -69,6 +80,8 @@ public class BeanUtil {
         for (T source : sourceList) {
             targetList.add(BeanUtil.copy(source, clazz));
         }
+
+        return targetList;
         return targetList;
     }
 
@@ -96,6 +109,7 @@ public class BeanUtil {
      * @param map       map对象
      * @param beanClass 目标实体类型
      * @return T 实体泛型
+     */
      */
     public static <T> T mapToBean(Map<String, Object> map, Class<T> beanClass) {
         if (map == null) {
@@ -145,5 +159,14 @@ public class BeanUtil {
         }
         return mapList.stream().map(e -> mapToBean(e, beanClass)).collect(toList());
     }
+
+    /**
+     * 复制对象
+     *
+     * @param source 源实体
+     * @param clazz  目标实体类型
+     * @return T 目标实体泛型
+     * @param <T>    目标实体泛型
+     * @param <K>    源实体泛型
 
 }

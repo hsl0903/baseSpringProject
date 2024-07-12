@@ -22,6 +22,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         this.redisUtil = redisUtil;
     }
 
+    // 登录拦截器
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        return true;
+    }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         return true;

@@ -7,6 +7,8 @@ import com.template.app.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+import java.util.List;
 
 import java.util.List;
 
@@ -29,6 +31,13 @@ public class AsyncServiceImpl implements IAsyncService {
         List<User> userList = userService.list(Wrappers.<User>lambdaQuery().isNotNull(User::getNickname));
         // 这里可以执行异步任务，例如发送邮件、短信等
 
+    }
+
+    @Override
+    @Async
+    public void deleteAsyncTask(Long userId) {
+        // 这里可以执行异步任务，例如删除文件、记录日志等
+        
     }
 
 }

@@ -39,6 +39,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .globalRequestParameters(getGlobalRequestParameters()).groupName("测试分组：用户接口");
+                
     }
 
     private ApiInfo apiInfo() {
@@ -48,6 +49,10 @@ public class SwaggerConfig {
                         + "<br/>国际化请求方式：每次请求需要带参数?lang=zh_CN或?lang=en_US（例如：https://test.test.com/user/login?lang=zh_CN）"
                         + "<br/> 需要登录验证的接口，统一在header中传入token,token值在登录注册时候又返回")
                 .contact(new Contact("Doug Liu", "", ""))
+                                .termsOfServiceUrl("https://github.com/dougliliu")
+
+                                 .license("Apache 2.0")
+                                  .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .version("v1")
                 .build();
     }
@@ -57,6 +62,8 @@ public class SwaggerConfig {
                   parameters.add(new RequestParameterBuilder()
                       .name("token")
                         .description("登录校验token")
+                         .required(true)
+                          .in(ParameterType.HEADER)
                         .required(true)
                         .in(ParameterType.HEADER)
                         .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))

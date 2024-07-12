@@ -67,6 +67,13 @@ public class UserController {
     }
         return userService.getUserDetail(userId);
 
+    @GetMapping("/getUserInfo")
+    @ApiOperation(value = "GET普通传参示例，获取用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "用户ID", dataTypeClass = Long.class, required = true)
+            
+    })
+
 
 
 
@@ -102,6 +109,7 @@ public class UserController {
     @ApiOperation(value = "GET普通传参示例，校验用户邮箱")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "email", value = "邮箱", dataTypeClass = String.class, required = true)
+
     })
 
 

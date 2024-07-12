@@ -28,4 +28,10 @@ public class Application extends SpringBootServletInitializer {
         
     }
 
+    // @Bean    
+    // public FilterRegistrationBean<Filter> corsFilter() {
+        
+        // FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();    
+    }
+
 }

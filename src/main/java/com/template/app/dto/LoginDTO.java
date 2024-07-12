@@ -79,7 +79,11 @@ public class LoginDTO implements Serializable {
     private String loginDevice;
         @ApiModelProperty(value = "用户登录地区")
         private String loginArea;
+            @ApiModelProperty(value = "用户登录地区")
         @ApiModelProperty(value = "用户登录地区")
+        private String loginArea;
+            @ApiModelProperty(value = "用户登录地区")
+            private String loginArea;
 
     
 

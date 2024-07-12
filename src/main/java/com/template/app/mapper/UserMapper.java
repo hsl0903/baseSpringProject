@@ -32,4 +32,11 @@ public interface UserMapper extends BaseMapper<User> {
      */
     UserDTO getUserInfo(Long userId);
 
+    /**
+         * 更新用户信息
+
+         * @param userDTO 用户信息
+          * @return int
+          */
+
 }

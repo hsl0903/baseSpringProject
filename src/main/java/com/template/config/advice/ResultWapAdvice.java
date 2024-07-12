@@ -30,7 +30,25 @@ public class ResultWapAdvice implements ResponseBodyAdvice<Object> {
         return !methodParameter.getMethod().isAnnotationPresent(IgnoreResultWap.class);
         // 对响应进行处理, 执行 beforeBodyWrite 方法
     }
+        @Override
 
+    // 对响应进行处理, 执行 beforeBodyWrite 方法
+    @Override
+    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass,
+
+                                  ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse)           
+                                  {
+                                      
+    // 定义最终的返回对象ResultDTO
+       ResultDTO resultDTO;
+        // 如果 o 是 null, response 不需要设置 data
+        if (o == null) {
+            
+            resultDTO = ResultDTO.success();
+            // 如果 o 已经是 ResultDTO 类型, 强转即可
+            
+        }
+                                  }
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass,
                                   ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
@@ -56,6 +74,15 @@ public class ResultWapAdvice implements ResponseBodyAdvice<Object> {
         // 设置响应体
         serverHttpResponse.getBody().write(resultDTO.toString().getBytes(StandardCharsets.UTF_8));
 
+        // 设置响应状态码
+        serverHttpResponse.setStatusCode(HttpStatus.OK);
+
+        // 设置响应头
+        serverHttpResponse.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+
+        // 设置响应体
+        serverHttpResponse.getBody().write(resultDTO.toString().getBytes(StandardCharsets.UTF_8));
+
         // 关闭响应流
         serverHttpResponse.getBody().flush();
 
@@ -63,8 +90,11 @@ public class ResultWapAdvice implements ResponseBodyAdvice<Object> {
         serverHttpResponse.getBody().close();
 
         // 返回 ResultDTO
+        serverHttpResponse.getBody().close();
+        
+        return resultDTO;   
 
-        // 返回 ResultDTO
+
         return resultDTO;
     }
 

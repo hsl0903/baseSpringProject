@@ -23,6 +23,10 @@ public class ApplicationEvent implements ApplicationListener<ContextRefreshedEve
         this.messageSource = messageSource;
     }
 
+    public MessageSource getMessageSource() {
+           return messageSource;
+    }
+
     /**
      * 处理应用事件
      * @param event 事件

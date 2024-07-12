@@ -21,4 +21,12 @@ public class ContextUtil {
         myHolder.set(context);
     }
 
+    public static void clear() {
+           myHolder.remove();
+    }
+
+    private ContextUtil() {
+        
+    }
+
 }

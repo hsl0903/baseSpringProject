@@ -96,6 +96,7 @@ public class CodeGenerator {
                             .enableSwagger()//开启swagger
                             .disableOpenDir()//设置生成完毕后不打开生成代码所在的目录,注释掉则变为打开
                             .dateType(DateType.ONLY_DATE)
+                                                        .commentDate("yyyy-MM-dd HH:mm:ss")//注释日期                   
                             .commentDate("yyyy-MM-dd");//注释日期
                 })
                 //包配置
@@ -108,7 +109,12 @@ public class CodeGenerator {
                             .service(service)
                             .serviceImpl(serviceImpl)
                             .controller(controller)
+
+                            .pathInfo(Collections.singletonMap(OutputFile.controller, outputDir))//设置Controller的生成位置
+
+                            .pathInfo(Collections.singletonMap(OutputFile.service, outputDir))//设置Service的生成位置
                             .pathInfo(Collections.singletonMap(OutputFile.xml, xmlOutputDir));//设置Mapper.xml的生成位置
+
                 })
                 //策略配置
                 .strategyConfig(builder -> {

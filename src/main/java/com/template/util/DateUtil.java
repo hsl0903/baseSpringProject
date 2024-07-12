@@ -22,6 +22,21 @@ public class DateUtil {
 
     private static final long ONE_YEAR = 31104000;
 
+
+    private static final String ONE_SECOND_AGO = "秒前";
+
+    private static final String ONE_MINUTE_AGO = "分钟前";
+    private static final String ONE_HOUR_AGO = "小时前";
+
+    private static final String ONE_DAY_AGO = "天前";
+
+    private static final String ONE_MONTH_AGO = "月前";
+
+    private static final String ONE_YEAR_AGO = "年前";
+    public static String format(Date date) {
+        long delta = new Date().getTime() - date.getTime();
+    }
+
     /**
      * 获取前几天的时间
      *

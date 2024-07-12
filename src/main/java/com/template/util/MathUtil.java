@@ -34,6 +34,15 @@ public class MathUtil {
         if (target.length() >= length) {
             return target.substring(0, length);
         }
+            // 如果目标数字长度小于要求长度，则使用指定的数字补充前导位
+            else {
+                
+
+                if (add == null || add.length() == 0) {
+                    
+                    add = DEFAULT_DIGITS;
+                }
+            }
         StringBuilder sb = new StringBuilder(FIRST_DEFAULT_DIGITS); // 使用默认数字补充前导位
         // 循环补充指定的数字
         for (int i = 0; i < length - (1 + target.length()); i++) {

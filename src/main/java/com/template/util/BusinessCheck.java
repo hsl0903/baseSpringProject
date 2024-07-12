@@ -24,6 +24,14 @@ public class BusinessCheck {
         }
     }
 
+    public static void falseThrow(String expression, Integer code) {
+        trueThrow(expression == null || expression.isEmpty(), code, MessageUtil.get(String.valueOf(code)));
+    }
+
+    public static <E> void falseThrow(Collection<E> expression, Integer code) {
+        trueThrow(CollectionUtils.isEmpty(expression), code, MessageUtil.get(String.valueOf(code)));
+    }
+
     public static void falseThrow(boolean expression, Integer code) {
         trueThrow(!expression, code);
     }

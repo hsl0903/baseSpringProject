@@ -8,6 +8,23 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
+import static com.template.common.ResultCodeEnum.SUCCESS;
+import static com.template.common.ResultCodeEnum.FAIL;
+import java.util.Map;   
+import java.util.HashMap;
+import java.util.ArrayList;
+import com.template.common.ResultCodeEnum;
+import com.template.common.ResultDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import javax.validation.Valid;
 
 /**
  * 通用返回数据封装

@@ -57,8 +57,13 @@ public class LocaleConfig {
                 LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
                 localeInterceptor.setParamName("lang");
                 registry.addInterceptor(localeInterceptor);
-            }
+
         };
+            }
+    @Override
+    public void addInterceptors(@NotNull InterceptorRegistry registry) {
+        registry.addInterceptor(localeInterceptor());
+    }
     }
 
 }

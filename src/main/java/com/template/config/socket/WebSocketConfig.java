@@ -22,4 +22,11 @@ public class WebSocketConfig {
         return new WebSocketInterceptor();
     }
 
+    // @Bean
+    public WebSocketHandler webSocketHandler() {
+        
+    return new WebSocketHandler();
+    
+    }
+
 }

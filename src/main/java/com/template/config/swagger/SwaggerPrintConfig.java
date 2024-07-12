@@ -32,5 +32,9 @@ public class SwaggerPrintConfig implements ApplicationListener<WebServerInitiali
             e.printStackTrace();
         }
     }
+    @Override
+    public String toString() {
+        return "SwaggerPrintConfig{}";
+    }
 
 }

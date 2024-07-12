@@ -36,7 +36,10 @@ public class MybatisPlusConfig {
         BlockAttackInnerInterceptor blockAttackInnerInterceptor = new BlockAttackInnerInterceptor();
         interceptor.addInnerInterceptor(paginationInnerInterceptor);
         interceptor.addInnerInterceptor(blockAttackInnerInterceptor);
+
         return interceptor;
+        return interceptor;
+
     }
 
     /**

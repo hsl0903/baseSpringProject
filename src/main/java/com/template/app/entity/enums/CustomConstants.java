@@ -17,6 +17,9 @@ public class CustomConstants {
 
         public static final int DEFAULT_PAGE_SIZE = 10;
 
+        public static final int MAX_PAGE_SIZE = 100;
+        public static final int MAX_PAGE = 1000;
+
     }
 
     /**
@@ -40,6 +43,8 @@ public class CustomConstants {
         public static final int ONE = 1;
 
         public static final int TWO = 2;
+
+        public static final int THREE = 3;
 
     }
 

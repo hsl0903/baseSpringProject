@@ -45,6 +45,11 @@ public class LocalDateTimeSerializerConfig {
                 .serializerByType(LocalDateTime.class, localDateTimeSerializer())
                 .deserializerByType(LocalDateTime.class, localDateTimeDeserializer());
     }
+    @Bean
+    public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer2() {
+        return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder
+    }
+
         
 
 }

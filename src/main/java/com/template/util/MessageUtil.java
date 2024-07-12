@@ -23,6 +23,10 @@ public class MessageUtil extends ResourceBundleMessageSource {
         messageSource = source;
     }
 
+    public static MessageSource getMessageSource() {
+           return messageSource;
+    }
+
     /**
      * 获取单个国际化翻译值
      * @param pvsKey 国际化的键

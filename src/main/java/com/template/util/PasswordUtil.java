@@ -27,6 +27,23 @@ public class PasswordUtil {
     public static String encryptPassword(String plainPassword, String salt) {
         return new Md5Hash(plainPassword, salt, 1).toHex();
     }
+    [ ] Set auto-merge
+
+Test and Deploy
+
+Use the built-in continuous integration in GitLab.
+
+[ ] Get started with GitLab CI/CD
+
+    /**
+     * 验证密码
+     *
+     * @param plainPassword 明文密码
+     * @param salt          盐值
+     * @param password      密码
+     * @return Boolean
+     */
+
 
     /**
      * 验证密码

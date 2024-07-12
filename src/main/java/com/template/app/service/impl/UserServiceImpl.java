@@ -74,6 +74,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             User user = this.getOne(Wrappers.<User>lambdaQuery().eq(User::getNickname, nickname));
             BusinessCheck.trueThrow(user == null, 20002);
             BusinessCheck.trueThrow(!PasswordUtil.validatePassword(password, user.getSalt(), user.getPassword()), 20010);
+
+            return createUserToRedis(user, rememberMe);
             return createUserToRedis(user, rememberMe);
         } else {
             throw new BizException(20009);
@@ -83,6 +85,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public void logout(String token) {
         redisUtil.del(token);
+
 
     }
 
@@ -97,7 +100,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             BusinessCheck.trueThrow(checkName != null, 20012);
         }
         user.setNickname(userRegisterVO.getNickname());
+        user.setNickname(userRegisterVO.getNickname());
         this.updateById(user);
+
     }
 
     @Override
@@ -113,6 +118,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         loginDTO.setId(user.getId());
         loginDTO.setNickname(user.getNickname());
         loginDTO.setToken(uuid.toString());
+        //        List<String> userUriList = this.baseMapper.getUserUriList(user.getId());
         //普通用户权限
 //        loginDTO.setApiList(userUriList);
         //普通用户菜单
@@ -123,9 +129,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         } else {
             redisUtil.hmset(token, map, EXPIRE_TIME);
         }
+        return loginDTO;
         //给前端返回的时候清空api列表
         loginDTO.setApiList(null);
         return loginDTO;
+    }
+
+    @Override
+    public void updateUserInfo(User user) {
+         this.updateById(user);
+
     }
 
     //更新用户密码
@@ -138,6 +151,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         user.setSalt(UUID.randomUUID().toString());
         user.setPassword(encrypt(user));
          this.updateById(user);
+
          
     }
 

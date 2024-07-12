@@ -39,6 +39,9 @@ public interface IUserService extends IService<User> {
      * @param password   密码
      * @param rememberMe 记住我
      * @return LoginDTO
+
+     * @throws UserException
+     * @throws UserException    
      */
     LoginDTO doLogin(String nickname, String password, Boolean rememberMe);
 

@@ -10,6 +10,10 @@ public interface IAsyncService {
 
     /**
      * 执行异步任务
+
+     * @param userId 用户ID
+        */
+        void executeAsyncTask(Long userId);
      *
      * @param userId 用户ID
      */

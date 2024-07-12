@@ -26,6 +26,12 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(value = "ID")
     private Long id;
 
+    @ApiModelProperty(value = "创建人")
+    private Long createBy;
+
+    @ApiModelProperty(value = "更新人")
+    private Long updateBy;
+
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
     private Timestamp createTime;
