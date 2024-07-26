@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+
 /**
  * 应用测试
  *
@@ -16,11 +17,36 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+public class ApplicationTests {
+    
+	@Test
+	void contextLoads() {
+	    
+		System.out.println("This is contextLoads!");
+		
+	}
+	void contextLoads() {
+        
+    }
+}
+
+@SpringBootTest
 class ApplicationTests {
+	@Test
+	void contextLoads() {
+	    
+				System.out.println("This is contextLoads!");
+
+		
+
+	}
 
 	@Test
 	void test1() {
         System.out.println("This is test1!");
+
+
+
 	}
 
 }

@@ -14,6 +14,7 @@ import java.util.Properties;
  *
  * @author Doug Liu
  * @since 2022-06-14
+ 
  */
 @Service
 @Slf4j
@@ -34,8 +35,14 @@ public class MailServiceImpl implements IMailService {
             }
 
     private static final String SENDER = "sender@163.com";
+            private static final String SENDER_NAME = "sender";
+
 
     private static final String PASSWORD = "password";
+
+    private static final String DEFAULT_ENCODING = "UTF-8";
+
+
 
     private static final String HOST = "smtp.163.com";
     private static final int PORT = 465;

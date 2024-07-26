@@ -1,5 +1,6 @@
 package com.template.app.entity.enums;
 
+
 /**
  * 自定义常数
  *
@@ -16,7 +17,7 @@ public class CustomConstants {
         public static final int DEFAULT_PAGE = 1;
 
         public static final int DEFAULT_PAGE_SIZE = 10;
-
+        public static final int DEFAULT_PAGE_SIZE_20 = 20;
         public static final int MAX_PAGE_SIZE = 100;
         public static final int MAX_PAGE = 1000;
 

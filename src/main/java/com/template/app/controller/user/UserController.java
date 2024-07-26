@@ -48,15 +48,6 @@ public class UserController {
         return userService.register(userRegisterVO);
     }
 
-
-    @GetMapping("/getUser")
-    @ApiOperation(value = "GET请求示例，获取用户")
-    public UserDTO getUserInfo() {
-//        log.info("请求方法开始-->方法名:【getUserInfo】-->参数:userId = {}", ContextUtil.getContext().getId());
-//        return userService.getUserDetail(ContextUtil.getContext().getId());
-        return new UserDTO();
-    }
-
     @GetMapping("/getUserInfo")
     @ApiOperation(value = "GET普通传参示例，获取用户")
     @ApiImplicitParams({
@@ -64,35 +55,28 @@ public class UserController {
     })
     public UserDTO getUserInfo(@RequestParam Long userId) {
         log.info("请求方法开始-->方法名:【getUserInfo】-->参数:userId = {}", userId);
-    }
         return userService.getUserDetail(userId);
-
-    @GetMapping("/getUserInfo")
-    @ApiOperation(value = "GET普通传参示例，获取用户")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "用户ID", dataTypeClass = Long.class, required = true)
-            
-    })
-
-
-
-
+    }
+    
     @GetMapping("/checkNickname")
     @ApiOperation(value = "GET普通传参示例，校验用户昵称")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "nickname", value = "昵称", dataTypeClass = String.class, required = true)
     })
-    public void checkNickname(@RequestParam String nickname) 
+    public ResponseEntity<String> checkNickname(@RequestParam String nickname) 
     {
-        userService.checkNickname(nickname);
+        boolean result = userService.checkNickname(nickname);
+        if (result) {
+            return ResponseEntity.ok("昵称可用");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("昵称已存在");
+        }
     }
 
     @GetMapping("/checkPhone")
     @ApiOperation(value = "GET普通传参示例，校验用户手机号")
     @ApiImplicitParams({
-        
             @ApiImplicitParam(name = "phone", value = "手机号", dataTypeClass = String.class, required = true)
-
     })
     public void checkPhone(@RequestParam String phone) {
         userService.checkPhone(phone);
@@ -101,16 +85,62 @@ public class UserController {
     @GetMapping("/checkEmail")
     @ApiOperation(value = "GET普通传参示例，校验用户邮箱")
     @ApiImplicitParams({
-        
             @ApiImplicitParam(name = "email", value = "邮箱", dataTypeClass = String.class, required = true)
     })
+    public void checkEmail(@RequestParam String email) {
+        userService.checkEmail(email);
+    }
 
-    @GetMapping("/checkEmail")
-    @ApiOperation(value = "GET普通传参示例，校验用户邮箱")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "email", value = "邮箱", dataTypeClass = String.class, required = true)
+    @GetMapping("/getUser")
+    @ApiOperation(value = "GET请求示例，获取用户")
+    public UserDTO getUserInfo() {
+//        log.info("请求方法开始-->方法名:【getUserInfo】-->参数:userId = {}", ContextUtil.getContext().getId());
+//        return userService.getUserDetail(ContextUtil.getContext().getId());
+        return new UserDTO();
+    }
+}
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 
-    })
+import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+impor                                                                           t static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+@SpringBootTest
+@AutoConfigureMockMvc
+public class UserControllerTest {
+
+    @Autowired
+    private UserController userController;
+    private MockMvc mockMvc;
+
+    @Test
+    public void testCheckNicknameAvailable() throws Exception {
+        mockMvc.perform(get("/checkNickname?nickname=test")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED))
+                .andExpect(status().isOk())
+                .andExpect(content().string("昵称可用"));
+    }
+
+    @Test
+    public void testCheckNicknameUnavailable() throws Exception {
+        mockMvc.perform(post("/checkNickname")
+                .param("nickname", "admin")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED))
+                .andExpect(status().isBadRequest())
+                  .andExpect(content().string("昵称已存在"));
+                .andExpect(content().string("昵称已存在"));
+    }
 }
